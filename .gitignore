@@ -1,0 +1,17 @@
+# Dependencias (se reinstalan con npm install)
+node_modules/
+
+# Compilados (se generan con npm run build)
+dist/
+dist-share/
+
+# Variables de entorno locales
+.env
+.env.local
+.env.*.local
+
+# Configuración local de herramientas
+.claude/settings.local.json
+.DS_Store
+Thumbs.db
+*.log

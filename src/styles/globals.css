@@ -1,0 +1,411 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Tipografías de marca (Home v2) */
+@font-face {
+  font-family: 'Caveat';
+  src: url('../assets/fonts/Caveat-VariableFont_wght.ttf') format('truetype');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+/* Inter (fuente de párrafo) se carga desde Google Fonts (index.html) */
+
+/*
+ * Paleta en modo claro y oscuro (canales RGB).
+ * Contrastes sobre el fondo (WCAG): texto principal > 12:1, secundario > 4.5:1,
+ * etiquetas pequeñas > 4.5:1, texto aún no leído ≥ 3:1.
+ */
+:root {
+  color-scheme: light;
+  --c-paper: 247 249 247; /* #f7f9f7 */
+  --c-paper-soft: 238 241 237;
+  --c-paper-line: 226 229 225;
+  --c-card: 255 255 255;
+  --c-graphite: 51 51 51; /* #333 · 12.0:1 */
+  --c-graphite-soft: 98 101 98; /* 5.6:1 */
+  --c-graphite-mute: 108 111 108; /* 4.9:1 */
+  --c-night: 15 15 15;
+  --c-ink-line: 43 43 43;
+  --c-line-soft: 196 199 196;
+  --c-sig: 220 223 219;
+  --c-read-dim: 136 139 136; /* 3.3:1 */
+  /* Acentos (en modo claro conservan los colores de siempre) */
+  --c-stroke: 15 15 15; /* líneas ilustrativas y animaciones lineales */
+  --c-curtain-ink: 247 249 247; /* "m" del telón de entrada */
+  --c-footer-sig: 46 46 46; /* firma del footer: gris oscuro discreto (#2e2e2e) */
+  --c-backdrop-line: 196 199 196; /* firma de fondo en Soluciones */
+  --c-cover-line: 58 58 58; /* líneas de las portadas de relleno */
+  --c-read-lit: 51 51 51; /* texto que se ilumina al leer */
+  /* Hover de botones y del menú: violeta de marca #7e6e87 en ambos modos */
+  --c-hover: 126 110 135; /* botones suaves y flechas */
+  --c-hover-ink: 255 255 255; /* blanco sobre #7e6e87: 4.7:1 */
+  --c-hover-solid: 126 110 135; /* botón negro */
+  --c-hover-light: 126 110 135; /* botones claros sobre fondo oscuro */
+  --c-hover-light-ink: 255 255 255;
+  --c-hover-glow: 126 110 135;
+  --c-hover-glow-a: 0.3;
+  /* Luz que recorre las líneas al hacer scroll: desactivada en modo claro */
+  --c-spark: 126 110 135;
+  --c-spark-a: 0;
+  --c-spark-halo: 0.45;
+}
+html.dark {
+  color-scheme: dark;
+  --c-paper: 18 19 18; /* #121312 */
+  --c-paper-soft: 26 28 26;
+  --c-paper-line: 46 49 46;
+  --c-card: 30 32 30;
+  --c-graphite: 222 224 220; /* 13.9:1 */
+  --c-graphite-soft: 168 172 168; /* 8.0:1 */
+  --c-graphite-mute: 140 144 140; /* 5.6:1 */
+  --c-night: 242 244 240;
+  /* Acento de marca en modo oscuro: #7e6e87 */
+  --c-ink-line: 126 110 135; /* #7e6e87 */
+  --c-line-soft: 83 74 88; /* #534a58 · mismo tono, más tenue (trazos secundarios) */
+  --c-sig: 42 45 42;
+  --c-read-dim: 112 116 112; /* 3.6:1 */
+  --c-stroke: 126 110 135;
+  --c-curtain-ink: 126 110 135;
+  --c-footer-sig: 46 46 46; /* igual en ambos modos: gris oscuro discreto */
+  --c-backdrop-line: 166 152 174; /* #a698ae: se ve sobre el violeta del hero y sobre el fondo oscuro */
+  --c-cover-line: 83 74 88;
+  /* Texto ya leído: gris claro (no lila). El lila solo aparece en la luz que recorre el texto al hacer scroll */
+  --c-read-lit: 190 193 190; /* #bec1be */
+  --c-hover: 126 110 135;
+  --c-hover-ink: 255 255 255; /* blanco sobre #7e6e87: 4.7:1 */
+  --c-hover-solid: 126 110 135;
+  --c-hover-light: 126 110 135;
+  --c-hover-light-ink: 255 255 255;
+  --c-hover-glow: 126 110 135;
+  --c-hover-glow-a: 0.35;
+  --c-spark: 222 208 232; /* #ded0e8 · versión brillante de #7e6e87 */
+  --c-spark-a: 1;
+  --c-spark-halo: 0.6;
+}
+
+/*
+ * Home · Soluciones en modo claro: fondo violeta #7b6b7a.
+ * Se redefinen los colores dentro de la sección para mantener el contraste:
+ * textos, líneas e ilustraciones en blanco (blanco sobre #7b6b7a: 5.0:1).
+ */
+html:not(.dark) .solutions-violet {
+  --c-paper-soft: 123 107 122; /* #7b6b7a fondo */
+  --c-paper: 123 107 122; /* texto de las etiquetas (sobre fondo blanco) */
+  --c-night: 255 255 255; /* títulos y fondo de etiquetas */
+  --c-graphite: 255 255 255; /* párrafos */
+  --c-stroke: 255 255 255; /* línea que acompaña el scroll y punto en órbita */
+  --c-ink-line: 255 255 255; /* trazos principales de las ilustraciones */
+  --c-line-soft: 176 164 175; /* trazos secundarios: violeta claro */
+  --c-hover: 15 15 15; /* hover en negro: el violeta se perdería sobre este fondo */
+  --c-hover-glow-a: 0;
+}
+/* Botón suave: píldora blanca con texto negro sobre el violeta */
+html:not(.dark) .solutions-violet .btn-soft:not(:hover):not(:focus-visible) {
+  background-color: #fff;
+  color: #0f0f0f;
+}
+
+/* Luz que recorre una línea: tramo corto, brillante y con halo */
+.line-spark {
+  stroke: rgb(var(--c-spark));
+  filter: drop-shadow(0 0 3px rgb(var(--c-spark))) drop-shadow(0 0 8px rgb(var(--c-spark) / var(--c-spark-halo)));
+}
+/*
+ * Lectura (solo modo oscuro): al llegar un párrafo a la zona de lectura, una franja de luz
+ * lo recorre de izquierda a derecha y deja el texto iluminado.
+ */
+html.dark .read-sweep {
+  background-image: linear-gradient(
+    90deg,
+    rgb(var(--c-read-lit)) 0%,
+    rgb(var(--c-read-lit)) 38%,
+    rgb(var(--c-spark)) 47%,
+    rgb(var(--c-spark)) 51%,
+    rgb(var(--c-read-dim)) 62%,
+    rgb(var(--c-read-dim)) 100%
+  );
+  background-size: 300% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: read-sweep 1.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes read-sweep {
+  to {
+    background-position: 0% 0;
+  }
+}
+
+/* En las ilustraciones: la luz viaja de principio a fin del trazo mientras se dibuja */
+.line-spark-run {
+  stroke-dasharray: 0.08 2;
+  animation: line-spark-run var(--spark-dur, 0.9s) cubic-bezier(0.5, 0, 0.2, 1) var(--spark-delay, 0s) both;
+}
+@keyframes line-spark-run {
+  0% {
+    stroke-dashoffset: 0.08;
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: -1;
+    opacity: 0;
+  }
+}
+
+/* Fondo y texto del sitio */
+html[data-theme='home'] body {
+  background: rgb(var(--c-paper));
+  background-image: none;
+  color: rgb(var(--c-graphite));
+}
+
+/*
+ * Cambio de modo como desvanecimiento suave de toda la página (View Transitions):
+ * la vista anterior se funde lentamente en la nueva, sin destellos.
+ */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 700ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+::view-transition-old(root) {
+  animation-name: theme-fade-out;
+}
+::view-transition-new(root) {
+  animation-name: theme-fade-in;
+}
+@keyframes theme-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes theme-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Alternativa para navegadores sin View Transitions: fundido de colores */
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+  transition-property: background-color, border-color, color, fill, stroke, box-shadow !important;
+  transition-duration: 650ms !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition-delay: 0s !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  html.theme-transition,
+  html.theme-transition * {
+    transition: none !important;
+  }
+}
+
+/* Tokens del sistema "Brand" (canales RGB para soportar opacidad en Tailwind) */
+:root {
+  --surface-page: 198 198 198;      /* #c6c6c6 fondo de página */
+  --surface-raised: 209 209 209;    /* #d1d1d1 cara de tarjetas/controles */
+  --surface-highlight: 216 216 216; /* #d8d8d8 canto superior iluminado, nunca texto */
+  --surface-halo: 208 199 192;      /* #d0c7c0 halo cálido, solo fondo */
+  --ink: 32 31 26;                  /* #201f1a texto principal (10.8:1) */
+  --ink-soft: 74 72 64;             /* derivado de ink para texto secundario */
+  --accent-glow: 250 198 123;       /* #fac67b borde ámbar activo, nunca texto */
+  --accent-glow-deep: 230 180 129;  /* #e6b481 caída del brillo */
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-surface-page font-sans text-body text-ink antialiased;
+    background-image: radial-gradient(
+      ellipse at 50% -10%,
+      rgb(var(--surface-highlight)) 0%,
+      rgb(var(--surface-page)) 60%
+    );
+    background-attachment: fixed;
+  }
+  ::selection {
+    background: rgb(var(--accent-glow) / 0.6);
+  }
+  :focus-visible {
+    outline: 2px solid rgb(var(--ink));
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  /*
+   * Escala tipográfica común (Caveat para títulos de página y sección, Inter para el resto).
+   * Caveat se ve más pequeña que su tamaño real, por eso sus valores son mayores.
+   * h1 56px · h2 44px · h3 24px · h4 18px · cuerpo 16–18px (en escritorio).
+   */
+  .t-h1 {
+    @apply font-script text-[2.5rem] leading-[1.05] text-night sm:text-[3rem] lg:text-[3.5rem];
+  }
+  .t-h2 {
+    @apply font-script text-[2.25rem] leading-[1.08] text-night sm:text-[2.5rem] lg:text-[2.75rem];
+  }
+  .t-h3 {
+    @apply font-geist text-xl font-medium leading-snug tracking-tight text-night sm:text-2xl;
+  }
+  .t-h4 {
+    @apply font-geist text-lg font-medium leading-snug text-night;
+  }
+  .surface-card {
+    @apply rounded-card bg-surface-raised shadow-raised;
+  }
+  .eyebrow {
+    @apply text-label uppercase tracking-[0.18em] text-ink-soft;
+  }
+  .h-display {
+    @apply text-4xl font-light leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl;
+  }
+  .h-section {
+    @apply text-3xl font-light leading-tight tracking-tight sm:text-4xl lg:text-5xl;
+  }
+}
+
+/*
+ * Crédito del footer: texto lila brillante (#c9b6d6 → #ded0e8, la luz de las ilustraciones)
+ * con un destello que lo recorre una vez y un halo suave del mismo tono.
+ */
+.shine-text {
+  background-image: linear-gradient(110deg, transparent 38%, rgb(255 255 255 / 0.95) 50%, transparent 62%),
+    linear-gradient(90deg, #c9b6d6, #ded0e8);
+  filter: drop-shadow(0 0 6px rgb(222 208 232 / 0.35));
+  background-size: 250% 100%, 100% 100%;
+  background-position: 130% 0, 0 0;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.shine-text.is-on {
+  animation: shine-sweep 2.6s cubic-bezier(0.4, 0, 0.2, 1) 0.3s 1 both;
+}
+@keyframes shine-sweep {
+  from {
+    background-position: 130% 0, 0 0;
+  }
+  to {
+    background-position: -30% 0, 0 0;
+  }
+}
+
+/* Logos de clientes en blanco y negro; en modo oscuro se invierten para que se vean claros */
+.logo-mono {
+  filter: grayscale(1) contrast(1.15);
+}
+html.dark .logo-mono {
+  filter: grayscale(1) invert(1) brightness(1.15);
+}
+
+/*
+ * Dos luces que recorren la frase (arriba y abajo) de "Este" a "Latuff".
+ * Misma luz que la de las ilustraciones: un tramo corto de línea #ded0e8 con halo.
+ */
+.credit-spark {
+  position: absolute;
+  left: 0;
+  width: 16px;
+  height: 2px;
+  margin-left: -8px;
+  border-radius: 9999px;
+  background: #ded0e8;
+  filter: drop-shadow(0 0 3px #ded0e8) drop-shadow(0 0 8px rgb(222 208 232 / 0.6));
+  opacity: 0;
+  pointer-events: none;
+}
+.credit-spark.top {
+  top: -6px;
+}
+.credit-spark.bottom {
+  bottom: -6px;
+}
+.is-on > .credit-spark {
+  animation: spark-run 6s cubic-bezier(0.45, 0, 0.25, 1) 0.3s infinite;
+}
+.is-on > .credit-spark.bottom {
+  animation-delay: 0.55s;
+}
+@keyframes spark-run {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  6% {
+    opacity: 1;
+  }
+  44% {
+    opacity: 1;
+  }
+  50% {
+    left: 100%;
+    opacity: 0;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+/* Hero: la "m" de la firma se escribe en el telón de entrada */
+.hero-intro-m {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: hero-intro-draw 1.15s cubic-bezier(0.6, 0.05, 0.3, 1) 0.15s forwards;
+}
+
+@keyframes hero-intro-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Animación de flujo Bloo (página de proyecto) ---------- */
+/* Cambio de pantalla como en un software real: casi instantáneo, sin deslizamiento */
+@keyframes bloo-screen { from { opacity: .82; } to { opacity: 1; } }
+@keyframes bloo-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes bloo-pop { from { opacity: 0; transform: translateY(14px) scale(.97); } to { opacity: 1; transform: none; } }
+@keyframes bloo-in { from { opacity: 0; transform: translateY(-8px); background: #dbe8ff; } to { opacity: 1; transform: none; } }
+@keyframes bloo-blink { 50% { opacity: 0; } }
+.bloo-caret { width: 1px; height: 14px; margin-left: 1px; vertical-align: -2px; background: #0b6bff; animation: bloo-blink 1s steps(1) infinite; }
+@keyframes bloo-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes bloo-grow-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes bloo-grow-y { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes bloo-pulse { 0%, 100% { box-shadow: 0 0 0 4px rgba(11,107,255,.18); } 50% { box-shadow: 0 0 0 10px rgba(11,107,255,.06); } }
+/* Pantallas largas dentro del MacBook: se desplazan solas de arriba a abajo */
+@keyframes mac-scroll { 0%, 12% { transform: translateY(0); } 50%, 62% { transform: translateY(var(--mac-shift)); } 100% { transform: translateY(0); } }
+@keyframes bloo-sheet { from { transform: translateY(100%); } to { transform: none; } }
+@keyframes puma-panel { from { transform: translateX(105%); } to { transform: none; } }
+/* Portada PUMA: video corto (zoom lento, vistas que se alternan y se desplazan) */
+@keyframes puma-cover-zoom { from { transform: scale(1); } to { transform: scale(1.07); } }
+@keyframes puma-cover-swap { 0% { opacity: 0; } 3% { opacity: 1; } 33% { opacity: 1; } 36% { opacity: 0; } 100% { opacity: 0; } }
+@keyframes puma-cover-pan { 0%, 15% { transform: translateY(0); } 55%, 70% { transform: translateY(-14%); } 100% { transform: translateY(0); } }
