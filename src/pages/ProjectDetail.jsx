@@ -9,6 +9,7 @@ import Reveal from '../components/ui/Reveal.jsx';
 import BlooCase from '../components/projects/BlooCase.jsx';
 import PumaCase from '../components/projects/PumaCase.jsx';
 import DatamedyCase from '../components/projects/DatamedyCase.jsx';
+import ImexCase from '../components/projects/ImexCase.jsx';
 import { PROJECTS } from '../content/site.js';
 
 function MetaLabel({ children }) {
@@ -105,7 +106,10 @@ export default function ProjectDetail() {
             <div>
               <MetaLabel>Empresa</MetaLabel>
               <dd className="mt-3 flex items-center gap-3">
-                {project.logoColor ? (
+                {project.confidential ? (
+                  // Empresa reservada: solo texto, sin logo
+                  <span className="text-sm text-graphite">{project.company}</span>
+                ) : project.logoColor ? (
                   // Logo real a color original
                   <img src={project.logo} alt={project.company} className="h-9 w-auto object-contain" />
                 ) : (
@@ -126,6 +130,8 @@ export default function ProjectDetail() {
         <PumaCase project={project} />
       ) : project.layout === 'datamedy' ? (
         <DatamedyCase project={project} />
+      ) : project.layout === 'imex' ? (
+        <ImexCase project={project} />
       ) : (
         <GenericSections project={project} />
       )}

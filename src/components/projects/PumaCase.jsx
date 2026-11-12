@@ -49,7 +49,7 @@ export default function PumaCase({ project }) {
       </section>
 
       {/* Vistas web estáticas, en orden */}
-      <MacGallery images={gallery} />
+      <MacGallery images={gallery} title="PUMA Recruiter · Gestión interna" />
 
       {/* Recorrido responsivo: Postulante → Formularios */}
       <section className="mx-auto mt-5 max-w-6xl px-5 sm:px-8">

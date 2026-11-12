@@ -30,7 +30,7 @@ export default function Home() {
         <div id="proyectos-home" className="relative z-10 scroll-mt-24">
           <ProjectCarousel projects={PROJECTS} />
           <div className="flex justify-center pb-16">
-            <HomeButton variant="soft" />
+            <HomeButton variant="soft" label="Ver proyectos" href="/proyectos" />
           </div>
         </div>
 

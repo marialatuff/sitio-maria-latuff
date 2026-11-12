@@ -378,5 +378,4 @@ Se pueden eliminar cuando se confirme que no hacen falta.
 
 - Conectar EmailJS para los correos con diseño (sección 10).
 - Enlace real de Instagram en `SOCIAL`.
-- Proyecto 4: contenido de ejemplo.
 - Datos de ejemplo de los recorridos y textos marcados con `// TODO`, por confirmar con María.

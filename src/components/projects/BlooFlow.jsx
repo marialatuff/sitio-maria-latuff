@@ -11,8 +11,8 @@ const SPEED = 0.6;
  * Flujo: 1. Inicio docente → 2. Mis materias → detalle → evaluaciones → 3. Recursos del docente → nuevo recurso.
  */
 
-const W = 1200; // tamaño de diseño del lienzo; se escala al ancho disponible
-const H = 750;
+const CW = 1200; // tamaño de diseño del lienzo por defecto; se escala al ancho disponible
+const CH = 750;
 
 const C = {
   blue: '#0b6bff',
@@ -380,7 +380,7 @@ function ModalRecurso({ typed, filled }) {
  * `script(ctx)` mueve el cursor y cambia el estado; `children(ui)` dibuja la pantalla según ese estado.
  * Solo reproducción: el visitante no puede interactuar.
  */
-export function FlowPlayer({ phases, initial, script, children, description, title = 'Bloo · Plataforma de gestión educativa', bg = C.bg }) {
+export function FlowPlayer({ phases, initial, script, children, description, title = 'Bloo · Plataforma de gestión educativa', bg = C.bg, w: W = CW, h: H = CH }) {
   const wrapRef = useRef(null);
   const canvasRef = useRef(null);
   const [scale, setScale] = useState(0.6);
@@ -394,7 +394,7 @@ export function FlowPlayer({ phases, initial, script, children, description, tit
     const ro = new ResizeObserver(([e]) => setScale(e.contentRect.width / W));
     ro.observe(el);
     return () => ro.disconnect();
-  }, []);
+  }, [W]);
 
   useEffect(() => {
     if (!inView) return undefined;

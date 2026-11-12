@@ -371,7 +371,6 @@ Además, por JavaScript, `SignatureBackdrop` y `SequenceStrip` cambian a su vers
 | Elemento | Ubicación | Qué falta |
 | --- | --- | --- |
 | Enlace de Instagram | `SOCIAL.instagram` | Hoy apunta a `instagram.com`; poner el perfil real |
-| Proyecto 4 | `EXAMPLE_PROJECTS` en `site.js` | Contenido de ejemplo (título, portada, logo, textos e imágenes) |
 | Testimonios de ejemplo | `LOREM_TESTIMONIALS` en `site.js` | Reemplazar por testimonios reales (hoy hay uno real: Roberto Pérez De Arce) |
 | Datos de ejemplo en recorridos animados | Componentes de `src/components/projects/` | Nombres, correos, cifras y textos inventados (estudiantes, prospectos, formularios, etc.). Confirmar con María. |
 | Ejemplos de la sección Arquitectura (Bloo y PUMA) | `site.js` (`example`, `job`) y `ArchProcess.jsx` | Marcados con `// TODO`: JTBD, hallazgos, decisiones y resultados de las pruebas son ilustrativos |

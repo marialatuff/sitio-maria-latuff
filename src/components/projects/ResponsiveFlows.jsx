@@ -16,7 +16,7 @@ const WW = 1200;
 const WH = 750;
 
 /* ---------- Reproductor doble (web + móvil) ---------- */
-export function DualPlayer({ phases, initial, script, Web, Mobile, label, title, phoneColor = 'white' }) {
+export function DualPlayer({ phases, initial, script, Web, Mobile, label, title, phoneColor = 'white', ww = WW, wh = WH }) {
   const webRef = useRef(null);
   const mobRef = useRef(null);
   const [ui, setUi] = useState(initial);
@@ -39,7 +39,7 @@ export function DualPlayer({ phases, initial, script, Web, Mobile, label, title,
     };
     // Cursor (web) y dedo (móvil) van a su elemento y hacen clic a la vez
     const press = async (t) => {
-      const pw = center(webRef.current, WW, t);
+      const pw = center(webRef.current, ww, t);
       const pm = center(mobRef.current, PHONE_W, t);
       if (!alive) return;
       if (pw) setCur({ ...pw, click: false, show: true });
@@ -70,8 +70,8 @@ export function DualPlayer({ phases, initial, script, Web, Mobile, label, title,
   return (
     <div ref={ref}>
       <div className="grid items-center gap-[5%] rounded-xl px-[6%] py-[7%] sm:grid-cols-[1fr_0.3fr]" style={{ background: 'radial-gradient(120% 90% at 50% 20%, #e6e6e8, #cfcfd2 70%, #c4c4c8)' }}>
-        <MacWindow {...(title ? { title } : {})}>
-          <Scaled w={WW} h={WH} innerRef={webRef}>
+        <MacWindow {...(title ? { title } : {})} ratio={`${ww} / ${wh}`}>
+          <Scaled w={ww} h={wh} innerRef={webRef}>
             <Web ui={ui} />
             <div className="absolute left-0 top-0 z-40" style={{ transform: `translate(${cur.x}px, ${cur.y}px)`, transition: 'transform .5s cubic-bezier(.45,0,.2,1)', opacity: cur.show ? 1 : 0 }}>
               <span className="absolute -left-5 -top-5 h-10 w-10 rounded-full" style={{ background: 'rgba(126,110,135,.35)', transform: `scale(${cur.click ? 1 : 0})`, transition: 'transform .26s' }} />

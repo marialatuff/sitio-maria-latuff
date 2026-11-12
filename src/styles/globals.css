@@ -404,6 +404,13 @@ html.dark .logo-mono {
 /* Pantallas largas dentro del MacBook: se desplazan solas de arriba a abajo */
 @keyframes mac-scroll { 0%, 12% { transform: translateY(0); } 50%, 62% { transform: translateY(var(--mac-shift)); } 100% { transform: translateY(0); } }
 @keyframes bloo-sheet { from { transform: translateY(100%); } to { transform: none; } }
+/* Datamedy: puntos de “escribiendo…” dentro de las burbujas de chat */
+@keyframes dm-typing { 0%, 60%, 100% { transform: translateY(0); opacity: .55; } 30% { transform: translateY(-7px); opacity: 1; } }
+/* Ecosistema de adquisición (Imex): luz superior que late lento y entradas de la vista de aterrizaje */
+@keyframes imex-glow { 0%, 100% { opacity: .25; } 50% { opacity: 1; } }
+@keyframes imex-rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+@keyframes imex-slide { from { opacity: 0; transform: translateX(80px) scale(.98); } to { opacity: 1; transform: none; } }
+@keyframes imex-caret { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
 @keyframes puma-panel { from { transform: translateX(105%); } to { transform: none; } }
 /* Portada PUMA: video corto (zoom lento, vistas que se alternan y se desplazan) */
 @keyframes puma-cover-zoom { from { transform: scale(1); } to { transform: scale(1.07); } }

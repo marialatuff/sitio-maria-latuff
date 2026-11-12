@@ -4,6 +4,7 @@ import { SectionTitle } from './BlooCase.jsx';
 import DatamedyBrand from './DatamedyBrand.jsx';
 import DatamedyLanding from './DatamedyLanding.jsx';
 import DatamedyModal from './DatamedyModal.jsx';
+import { FeaturesMock, PlansMock } from './DatamedyMockups.jsx';
 
 /**
  * Caso Datamedy: requerimientos → 1. La marca (animación de construcción del logo) →
@@ -21,9 +22,12 @@ export default function DatamedyCase({ project }) {
         <ReadingText className="mt-4 max-w-2xl text-[1.05rem]">{requirements.body}</ReadingText>
       </section>
 
-      {/* 1. Necesidad primaria: La Marca */}
+      {/* 1. Diseño de identidad de marca */}
       <section className="mx-auto mt-24 max-w-6xl px-5 sm:mt-32 sm:px-8">
         <SectionTitle className="max-w-3xl">{brand.title}</SectionTitle>
+        {brand.body && (
+          <ReadingText className="mt-4 max-w-2xl text-[1.05rem]">{brand.body}</ReadingText>
+        )}
         <div className="mt-10">
           <DatamedyBrand />
         </div>
@@ -42,7 +46,13 @@ export default function DatamedyCase({ project }) {
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
           {gallery.map((img, i) => (
             <Reveal key={img.alt} delay={(i % 2) * 100}>
-              <img src={img.src} alt={img.alt} loading="lazy" className="w-full rounded-xl" />
+              {img.anim === 'features' ? (
+                <FeaturesMock src={img.src} alt={img.alt} />
+              ) : img.anim === 'plans' ? (
+                <PlansMock src={img.src} alt={img.alt} />
+              ) : (
+                <img src={img.src} alt={img.alt} loading="lazy" className="w-full rounded-xl" />
+              )}
             </Reveal>
           ))}
         </div>

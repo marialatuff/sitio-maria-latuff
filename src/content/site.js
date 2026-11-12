@@ -31,6 +31,21 @@ import pumaPostulanteForms from '../assets/projects/puma/postulante-formularios.
 import blooEvaluaciones from '../assets/projects/bloo/mis-evaluaciones.png';
 import blooAsistencia from '../assets/projects/bloo/control-asistencia.png';
 // Fotos de clientes (testimonios)
+import imexCover from '../assets/projects/imex/aterrizaje.jpg';
+import imexPortada from '../assets/projects/imex/portada.jpg';
+import imexOnboarding from '../assets/projects/imex/onboarding.jpg';
+import imexDashboard from '../assets/projects/imex/dashboard.jpg';
+import imexPerfil from '../assets/projects/imex/perfil.jpg';
+import imexContrato from '../assets/projects/imex/contrato.jpg';
+import imexFacturas from '../assets/projects/imex/facturas.jpg';
+import imexTickets from '../assets/projects/imex/tickets.jpg';
+import imexTicketsVacio from '../assets/projects/imex/tickets-vacio.jpg';
+import imexClaroValor from '../assets/projects/imex/claro-valor.jpg';
+import imexClaroAbout from '../assets/projects/imex/claro-about.jpg';
+import imexClaroDocumento from '../assets/projects/imex/claro-documento.jpg';
+import imexClaroTickets from '../assets/projects/imex/tickets-light.jpg';
+import imexClaroPropuesta from '../assets/projects/imex/claro-propuesta.jpg';
+
 import robertoPhoto from '../assets/testimonials/roberto-perez-de-arce.jpg';
 
 // Enlace público (viewform) del Google Form; no usar el enlace /edit
@@ -388,20 +403,76 @@ const DATAMEDY = {
   tags: ['Diseñador de Marca', 'Diseñador UX UI'],
   intro: 'Diseño y experiencia de Landing page de la empresa.',
   requirements: {
-    title: 'Requerimientos',
-    body: 'Definición del marco de trabajo junto a datamedy. Evaluamos las necesidades y propuso un marco de trabajo.',
+    title: 'Sobre el proyecto',
+    body: 'Datamedy es una aplicación que le permite al profesional de la salud gestionar sus citas médicas en Chile. Sus fundamentos son la comunicación y la conexión con el paciente.',
   },
-  brand: { title: '1. Necesidad primaria: La Marca' },
+  brand: {
+    title: '1. Diseño de identidad de marca',
+    body: 'Conceptualización y diseño de sistemas de identidad visual estratégicos para datamedy. Transformo la esencia y propuesta de valor de un negocio en una marca memorable, coherente y escalable a través de todos sus puntos de contacto.',
+  },
   web: { title: '2. Landing page / UI Kit' },
   // Mockups estáticos (ya traen su fondo violeta)
   gallery: [
     { src: dmHero, alt: 'Hero de la landing' },
-    { src: dmCaracteristicas, alt: 'Características' },
-    { src: dmPlanes, alt: 'Planes especiales' },
+    { src: dmCaracteristicas, alt: 'Características', anim: 'features' },
+    { src: dmPlanes, alt: 'Planes especiales', anim: 'plans' },
     { src: dmFooter, alt: 'Llamado a la acción y footer' },
   ],
 };
 
+const IMEX = {
+  slug: 'ecosistema-de-adquisicion',
+  layout: 'imex', // misma arquitectura de página que Bloo (ver src/components/projects/ImexCase.jsx)
+  title: 'Ecosistema de adquisición',
+  cover: imexPortada, // portada de la tarjeta (imagen de María)
+  company: 'Reservada',
+  confidential: true, // la empresa se muestra como texto, sin logo
+  logo: null,
+  tags: ['AI Product Builder', 'Research'],
+  intro: 'Diseñar un ecosistema de adquisición y activación de usuarios interesados en datos de comercio exterior.',
+  sheet: [
+    { label: 'Alcance', value: 'B2C' },
+    { label: 'Mercado', value: 'India / Europa' },
+    { label: 'Metodología', value: 'Investigación + Prototipado paralelo con IA' },
+  ],
+  context: {
+    title: 'Contexto',
+    body: 'Diseñar un ecosistema de adquisición y activación de usuarios interesados en datos de comercio exterior. El reto consistió en estructurar un embudo de conversión multicanal que guiara a los prospectos desde el primer contacto hasta la plataforma principal, logrando tres objetivos clave.',
+    needTitle: 'Necesidad',
+    needs: [
+      { title: 'Captación multicanal', body: 'Integrar distintos puntos de entrada para atraer y registrar clientes potenciales de forma fluida.' },
+      { title: 'Onboarding personalizado', body: 'Diseñar un flujo de bienvenida orientado a perfilar los intereses comerciales de cada usuario desde el primer momento.' },
+      { title: 'Conversión a plataforma', body: 'Conducir a los usuarios calificados hacia el entorno premium, entregándoles inteligencia de datos relevante según su perfil.' },
+    ],
+  },
+  // Modo oscuro: vistas web en ventana de Mac (2 en 2) + animación responsiva de 3 pantallas
+  dark: {
+    title: 'Modo Oscuro',
+    gallery: [
+      { src: imexCover, alt: 'Aterrizaje' },
+      { src: imexOnboarding, alt: 'Onboarding' },
+      { src: imexDashboard, alt: 'Sala virtual: propuesta de valor' },
+      { src: imexPerfil, alt: 'Perfil' },
+      { src: imexContrato, alt: 'Vista de contrato' },
+      { src: imexFacturas, alt: 'Facturas' },
+      { src: imexTickets, alt: 'Mis tickets' },
+      { src: imexTicketsVacio, alt: 'Mis tickets: sin solicitudes' },
+    ],
+  },
+  // Modo claro: vistas web (la propuesta larga ocupa el ancho y se desplaza sola) + animación responsiva
+  light: {
+    title: 'Modo Claro',
+    gallery: [
+      { src: imexClaroValor, alt: 'Propuesta de valor' },
+      { src: imexClaroAbout, alt: 'About Imexdbusiness' },
+      { src: imexClaroDocumento, alt: 'Vista de documento' },
+      { src: imexClaroTickets, alt: 'Mis tickets' },
+      { src: imexClaroPropuesta, alt: 'Propuesta: Nowcasting revenue with customs data', wide: true, shift: '-71.85%' },
+    ],
+  },
+};
+
+// Proyecto de ejemplo (ya no se muestra; se reemplazó por el Ecosistema de adquisición)
 const EXAMPLE_PROJECTS = [4].map((n, i) => ({
   slug: `proyecto-${n}`,
   title: `Título de ejemplo ${n}`, // TODO
@@ -418,7 +489,7 @@ const EXAMPLE_PROJECTS = [4].map((n, i) => ({
   })),
 }));
 
-export const PROJECTS = [BLOO, PUMA, DATAMEDY, ...EXAMPLE_PROJECTS];
+export const PROJECTS = [BLOO, PUMA, DATAMEDY, IMEX];
 
 /* ---------- Testimonios ----------
  * headline: frase destacada · quote: testimonio · name / role: persona y cargo
