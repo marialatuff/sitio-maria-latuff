@@ -249,7 +249,10 @@ function MarqueeRow({ items, direction = 1, speed = 0.03 }) {
     s.goTo = (s.goTo ?? s.x) + dir * (card.getBoundingClientRect().width + gap);
   };
 
-  const loop = [...items, ...items];
+  // Con pocos testimonios se repiten hasta llenar la fila (mínimo 6 tarjetas por vuelta) para que el bucle no deje huecos
+  const reps = Math.max(1, Math.ceil(6 / Math.max(1, items.length)));
+  const base = Array.from({ length: reps }, () => items).flat();
+  const loop = [...base, ...base];
   return (
     <>
       <div

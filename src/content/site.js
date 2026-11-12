@@ -521,23 +521,8 @@ const REAL_TESTIMONIALS = [
   },
 ];
 
-// Relleno temporal hasta completar los testimonios reales
-const LOREM_TESTIMONIALS = [
-  ['Consectetur adipiscing elit', 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'],
-  ['Sed do eiusmod tempor', 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'],
-  ['Ut enim ad minim veniam', 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'],
-].map(([headline, quote], i) => ({
-  headline,
-  quote,
-  name: 'Lorem Ipsum',
-  role: 'Cargo',
-  company: `Empresa ${i + 2}`,
-  photo: null,
-  logo: null,
-  website: '',
-}));
-
-export const TESTIMONIALS = [...REAL_TESTIMONIALS, ...LOREM_TESTIMONIALS];
+// Solo testimonios reales (se eliminaron los de relleno)
+export const TESTIMONIALS = REAL_TESTIMONIALS;
 
 /* ---------- B. Conóceme ---------- */
 export const ABOUT = {
