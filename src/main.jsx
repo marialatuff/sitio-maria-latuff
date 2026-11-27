@@ -7,10 +7,11 @@ import './styles/globals.css';
 // La versión para compartir como página de claude.ai (npm run build:share)
 // navega en memoria, porque allí no se pueden usar rutas tipo /conoceme.
 const Router = import.meta.env.VITE_ROUTER === 'memory' ? MemoryRouter : BrowserRouter;
+const routerProps = import.meta.env.VITE_ROUTER === 'memory' ? {} : { basename: import.meta.env.BASE_URL };
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Router>
+    <Router {...routerProps}>
       <App />
     </Router>
   </React.StrictMode>,
