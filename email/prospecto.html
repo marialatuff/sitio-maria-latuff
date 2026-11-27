@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!--
+  Correo para María cuando llega un formulario de "Trabajemos juntos".
+  Plantilla para EmailJS: las {{variables}} se rellenan con los datos del formulario.
+  Estilos en línea y tablas, para que se vea bien en Gmail, Outlook y Apple Mail.
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="dark" />
+<meta name="supported-color-schemes" content="dark" />
+<title>¡Tienes nuevo prospecto!</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body style="margin:0;padding:0;background:#0f0f0f;">
+<!-- Texto de vista previa en la bandeja de entrada -->
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;">{{nombre}} de {{empresa}} quiere trabajar contigo.</div>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#0f0f0f;">
+  <tr>
+    <td align="center" style="padding:40px 16px;">
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:600px;">
+
+        <!-- Logo -->
+        <tr>
+          <td style="padding:0 8px 28px;">
+            <img src="{{web}}/email/logo.png" width="150" height="63" alt="María Latuff · AI Product Builder" style="display:block;border:0;width:150px;height:auto;" />
+          </td>
+        </tr>
+
+        <!-- Tarjeta -->
+        <tr>
+          <td style="background:#1a1a1a;border:1px solid #2a2a2a;border-radius:20px;padding:40px 36px;">
+
+            <!-- Línea lila con su punto de luz -->
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td width="56" style="height:2px;line-height:2px;font-size:0;background:#ded0e8;border-radius:2px;">&nbsp;</td>
+                <td style="height:2px;line-height:2px;font-size:0;background:#7e6e87;">&nbsp;</td>
+              </tr>
+            </table>
+
+            <h1 style="margin:28px 0 8px;font-family:'Caveat','Brush Script MT',Georgia,serif;font-weight:500;font-size:44px;line-height:1.05;color:#f7f9f7;">¡Tienes nuevo prospecto!</h1>
+            <p style="margin:0 0 32px;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:15px;line-height:1.6;color:#a698ae;">Llegó un formulario desde <span style="color:#ded0e8;">Trabajemos juntos</span>. Estos son sus datos:</p>
+
+            <!-- Sobre la persona -->
+            <p style="margin:0 0 10px;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#7e6e87;">Contacto</p>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate;background:#262626;border:1px solid #333333;border-radius:14px;margin-bottom:28px;">
+              <tr>
+                <td style="padding:14px 18px;border-bottom:1px solid #333333;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:13px;color:#9a9a9a;width:38%;">Nombre y Apellido</td>
+                <td style="padding:14px 18px;border-bottom:1px solid #333333;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:14px;color:#f7f9f7;">{{nombre}}</td>
+              </tr>
+              <tr>
+                <td style="padding:14px 18px;border-bottom:1px solid #333333;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:13px;color:#9a9a9a;">Cargo</td>
+                <td style="padding:14px 18px;border-bottom:1px solid #333333;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:14px;color:#f7f9f7;">{{cargo}}</td>
+              </tr>
+              <tr>
+                <td style="padding:14px 18px;border-bottom:1px solid #333333;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:13px;color:#9a9a9a;">Empresa</td>
+                <td style="padding:14px 18px;border-bottom:1px solid #333333;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:14px;color:#f7f9f7;">{{empresa}}</td>
+              </tr>
+              <tr>
+                <td style="padding:14px 18px;border-bottom:1px solid #333333;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:13px;color:#9a9a9a;">Email</td>
+                <td style="padding:14px 18px;border-bottom:1px solid #333333;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:14px;"><a href="mailto:{{email}}" style="color:#ded0e8;text-decoration:none;">{{email}}</a></td>
+              </tr>
+              <tr>
+                <td style="padding:14px 18px;border-bottom:1px solid #333333;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:13px;color:#9a9a9a;">Teléfono / WhatsApp</td>
+                <td style="padding:14px 18px;border-bottom:1px solid #333333;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:14px;color:#f7f9f7;">{{telefono}}</td>
+              </tr>
+              <tr>
+                <td style="padding:14px 18px;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:13px;color:#9a9a9a;">País</td>
+                <td style="padding:14px 18px;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:14px;color:#f7f9f7;">{{pais}}</td>
+              </tr>
+            </table>
+
+            <!-- Proyecto -->
+            <p style="margin:0 0 10px;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#7e6e87;">Su proyecto</p>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate;background:#262626;border:1px solid #333333;border-radius:14px;margin-bottom:28px;">
+              <tr>
+                <td style="padding:16px 18px;border-bottom:1px solid #333333;">
+                  <p style="margin:0 0 6px;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:13px;color:#9a9a9a;">Estado</p>
+                  <span style="display:inline-block;padding:5px 12px;border-radius:999px;background:#2b2530;border:1px solid #7e6e87;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:13px;color:#ded0e8;">{{estado}}</span>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:16px 18px;">
+                  <p style="margin:0 0 6px;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:13px;color:#9a9a9a;">Problema o necesidad</p>
+                  <p style="margin:0;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:15px;line-height:1.65;color:#f7f9f7;">{{problema}}</p>
+                </td>
+              </tr>
+            </table>
+
+            <!-- Fechas -->
+            <p style="margin:0 0 10px;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#7e6e87;">Fechas propuestas para la llamada</p>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:32px;">
+              <tr>
+                <td width="33%" style="padding-right:6px;">
+                  <div style="background:#262626;border:1px solid #333333;border-radius:12px;padding:12px 14px;font-family:'Inter',Helvetica,Arial,sans-serif;">
+                    <div style="font-size:11px;color:#9a9a9a;">Opción 1</div>
+                    <div style="font-size:14px;color:#f7f9f7;margin-top:4px;">{{fecha_1}}</div>
+                  </div>
+                </td>
+                <td width="33%" style="padding:0 3px;">
+                  <div style="background:#262626;border:1px solid #333333;border-radius:12px;padding:12px 14px;font-family:'Inter',Helvetica,Arial,sans-serif;">
+                    <div style="font-size:11px;color:#9a9a9a;">Opción 2</div>
+                    <div style="font-size:14px;color:#f7f9f7;margin-top:4px;">{{fecha_2}}</div>
+                  </div>
+                </td>
+                <td width="33%" style="padding-left:6px;">
+                  <div style="background:#262626;border:1px solid #333333;border-radius:12px;padding:12px 14px;font-family:'Inter',Helvetica,Arial,sans-serif;">
+                    <div style="font-size:11px;color:#9a9a9a;">Opción 3</div>
+                    <div style="font-size:14px;color:#f7f9f7;margin-top:4px;">{{fecha_3}}</div>
+                  </div>
+                </td>
+              </tr>
+            </table>
+
+            <!-- Botón -->
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="border-radius:999px;background:#f7f9f7;">
+                  <a href="mailto:{{email}}?subject=Nuestra%20llamada" style="display:inline-block;padding:12px 24px;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:14px;font-weight:500;color:#0f0f0f;text-decoration:none;">Responder a {{nombre}} →</a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Pie -->
+        <tr>
+          <td align="center" style="padding:24px 8px 0;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.04em;color:#c9b6d6;">
+            Enviado desde el formulario de <a href="{{web}}" style="color:#ded0e8;text-decoration:none;">tu sitio</a> · María Latuff, AI Product Builder
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

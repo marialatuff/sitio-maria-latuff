@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>María Latuff · AI Product Builder</title>
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      // Aplica el modo guardado (o el del sistema) antes de pintar, para evitar destellos.
+      // DARK_ONLY: por ahora solo se muestra el modo oscuro. La versión clara sigue en el código;
+      // para recuperarla, pon false aquí y en DARK_ONLY de src/config.js.
+      var DARK_ONLY = true;
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          if (DARK_ONLY || t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Open+Sans:wght@400;600;700&family=DM+Serif+Display&family=Work+Sans:wght@300;400;500&family=Inter:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" crossorigin src="/sitio-maria-latuff/assets/index-CSwrMum7.js"></script>
+    <link rel="stylesheet" crossorigin href="/sitio-maria-latuff/assets/index-Drl8eF5W.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
